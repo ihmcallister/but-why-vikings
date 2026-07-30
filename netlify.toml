@@ -1,7 +1,7 @@
 [build]
   base = "site"
   publish = "public"
-  command = "hugo"
+  command = "go run ./cmd/episode-sync && hugo"
 
 [build.environment]
   HUGO_VERSION = "0.161.1"

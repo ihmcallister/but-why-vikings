@@ -6,3 +6,6 @@ site/hugo_stats.json
 
 # Temporary lock file while building
 site/.hugo_build.lock
+
+# Files generated from RSS
+site/content/episodes/rss-*.md

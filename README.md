@@ -17,6 +17,26 @@ Then serve the site locally with:
 just
 ```
 
+## Episode Sync
+
+Episodes are synced from the podcast RSS feed during build time and written into `site/content/episodes` as `rss-*.md` files.
+
+The sync command is implemented in `site/cmd/episode-sync`.
+
+Run sync manually with:
+
+```bash
+just sync-episodes
+```
+
+Build with sync:
+
+```bash
+just build
+```
+
+The process is also run automatically on Netlify during deploys.
+
 ### Or, developing without Docker
 
 ```bash
