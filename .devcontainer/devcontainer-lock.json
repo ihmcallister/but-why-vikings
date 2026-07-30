@@ -1,0 +1,9 @@
+{
+  "features": {
+    "ghcr.io/prplecake/devcontainer-features/dart-sass:1.0.0": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/prplecake/devcontainer-features/dart-sass@sha256:9e53545eecb1161710e5a3559bae4d1d42038db84d31f784e4f36249f7bea7c5",
+      "integrity": "sha256:9e53545eecb1161710e5a3559bae4d1d42038db84d31f784e4f36249f7bea7c5"
+    }
+  }
+}

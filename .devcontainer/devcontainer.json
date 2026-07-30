@@ -1,0 +1,14 @@
+{
+  "name": "But Why Vikings Devcontainer",
+  "image": "ghcr.io/iaingalloway/devcontainers/hugo:1.5.44",
+  "features": {
+    "ghcr.io/prplecake/devcontainer-features/dart-sass:1.0.0": {
+      "version": "1.102.0"
+    }
+  },
+  "runArgs": [
+    "--name",
+    "but-why-vikings-devcontainer",
+    "--network=host"
+  ]
+}

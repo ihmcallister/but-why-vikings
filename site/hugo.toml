@@ -1,0 +1,34 @@
+baseURL = 'https://butwhyvikings.giantbrain.co.uk/'
+locale = 'en-us'
+title = 'But, Why Vikings?'
+ignoreLogs = ['warning-goldmark-raw-html']
+
+[markup.highlight]
+noclasses = false
+style = "github"
+
+[[module.imports]]
+path = "github.com/willfaught/paige"
+
+[paige.pages]
+disable_authors = true
+disable_date = true
+disable_keywords = true
+disable_next = true
+disable_prev = true
+disable_reading_time = true
+disable_series = true
+disable_toc = true
+disable_word_count = true
+
+[paige.subpages]
+disable_authors = true
+disable_date = true
+disable_keywords = true
+disable_reading_time = true
+disable_series = true
+disable_summary = true
+disable_word_count = true
+
+[paige.site]
+disable_breadcrumbs = true
