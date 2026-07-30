@@ -1,7 +1,18 @@
 baseURL = 'https://butwhyvikings.giantbrain.co.uk/'
-locale = 'en-us'
-title = 'But, Why Vikings?'
-ignoreLogs = ['warning-goldmark-raw-html']
+
+[languages.en]
+copyright = "© Iain McAllister"
+direction = "ltr"
+label = "English"
+locale = "en-gb"
+title = "But, Why Vikings?"
+weight = 10
+
+[languages.en.params.paige.site]
+description = " Ava Foxfort, Tim Clare, and Iain McAllister mull over tabletop conudrums"
+
+[markup.goldmark.renderer]
+unsafe = true
 
 [markup.highlight]
 noclasses = false
@@ -10,7 +21,16 @@ style = "github"
 [[module.imports]]
 path = "github.com/willfaught/paige"
 
-[paige.pages]
+[outputs]
+home = ["atom", "html", "paige-search", "rss"]
+section = ["atom", "html", "rss"]
+taxonomy = ["atom", "html", "rss"]
+term = ["atom", "html", "rss"]
+
+[pagination]
+pagersize = 50
+
+[params.paige.pages]
 disable_authors = true
 disable_date = true
 disable_keywords = true
@@ -20,8 +40,15 @@ disable_reading_time = true
 disable_series = true
 disable_toc = true
 disable_word_count = true
+maximize_heading_levels = true
+normalize_heading_levels = true
 
-[paige.subpages]
+[params.paige.site]
+color_scheme = "dark"
+disable_breadcrumbs = true
+disable_credit = true
+
+[params.paige.subpages]
 disable_authors = true
 disable_date = true
 disable_keywords = true
@@ -29,6 +56,3 @@ disable_reading_time = true
 disable_series = true
 disable_summary = true
 disable_word_count = true
-
-[paige.site]
-disable_breadcrumbs = true
