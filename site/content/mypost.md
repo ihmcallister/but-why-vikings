@@ -4,4 +4,9 @@ draft = false
 title = 'Mypost'
 +++
 
-Hello, world!
+*I can type whatever I want*
+
+- Here is a list
+- And some more
+
+And a [link](www.giantbrain.co.uk)
