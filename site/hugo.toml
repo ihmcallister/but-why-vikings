@@ -30,6 +30,64 @@ term = ["atom", "html", "rss"]
 [pagination]
 pagersize = 50
 
+[params.paige]
+style = """
+:root {
+	--cream: #FEEBB9;
+	--pink: #FF64C7;
+	--teal: #0A96AB;
+	--soft-pink: #FFB6EF;
+	--deep-teal: #00413E;
+}
+
+html,
+body {
+	min-height: 100%;
+}
+
+html {
+	background: linear-gradient(135deg, var(--cream) 0%, var(--soft-pink) 45%, var(--pink) 100%);
+	background-attachment: fixed;
+}
+
+body {
+	background: transparent;
+	min-height: 100vh;
+	color: var(--deep-teal);
+}
+
+a {
+	color: var(--teal);
+}
+
+a:hover,
+a:focus-visible {
+	color: var(--pink);
+}
+
+#paige-site-title a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--deep-teal);
+}
+
+#paige-site-description,
+#paige-page-content,
+#paige-page-description {
+	color: var(--deep-teal);
+}
+
+#paige-site-menu .nav-link.active,
+#paige-site-menu .nav-link:focus-visible,
+#paige-site-menu .nav-link:hover {
+	color: var(--pink);
+}
+"""
+
 [params.paige.pages]
 disable_authors = true
 disable_date = true
@@ -44,7 +102,8 @@ maximize_heading_levels = true
 normalize_heading_levels = true
 
 [params.paige.site]
-color_scheme = "dark"
+color = "#0A96AB"
+color_scheme = "light"
 disable_breadcrumbs = true
 disable_credit = true
 
