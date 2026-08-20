@@ -1,0 +1,113 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: ihmcallister/but-why-vikings
+  branch: main
+  site_domain: butwhyvikings.giantbrain.co.uk
+  squash_merges: true
+publish_mode: editorial_workflow
+site_url: https://butwhyvikings.giantbrain.co.uk/
+media_folder: site/static/img
+
+collections:
+  - name: site_pages
+    label: Pages
+    files:
+      - name: homepage
+        label: Homepage
+        file: site/content/_index.md
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Body
+            name: body
+            widget: markdown
+          - label: Paige settings
+            name: paige
+            widget: object
+            required: false
+            fields:
+              - label: Page settings
+                name: pages
+                widget: object
+                required: false
+                fields:
+                  - label: Disable title
+                    name: disable_title
+                    widget: boolean
+                    required: false
+                  - label: Disable sections
+                    name: disable_sections
+                    widget: boolean
+                    required: false
+      - name: hosts-index
+        label: Hosts page
+        file: site/content/hosts/_index.md
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Body
+            name: body
+            widget: markdown
+      - name: episodes-index
+        label: Episodes page
+        file: site/content/episodes/_index.md
+        fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Body
+            name: body
+            widget: markdown
+  - name: pages
+    label: Page
+    folder: site/content
+    filter:
+      field: type
+      value: page
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: false
+      - name: type
+        widget: hidden
+        default: page
+      - label: Body
+        name: body
+        widget: markdown
+  - name: hosts
+    label: Hosts
+    folder: site/content/hosts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Draft
+        name: draft
+        widget: boolean
+        default: false
+      - label: Weight
+        name: weight
+        widget: number
+        default: 1
+      - name: type
+        widget: hidden
+        default: host
+      - label: Body
+        name: body
+        widget: markdown
