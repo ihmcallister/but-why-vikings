@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Content Manager</title>
+    <link href="/admin/config.yaml" type="text/yaml" rel="cms-config-url">
+  </head>
+  <body>
+    <script src="https://unpkg.com/@sveltia/cms@0.193.2/dist/sveltia-cms.js"></script>
+    <script>
+      var PagePreview = createClass({
+        render: function() {
+          var entry = this.props.entry;
+
+          return h('article', {},
+            h('header', {},
+              h('h1', {}, entry.getIn(['data', 'title']))
+            ),
+            h('section', {}, this.props.widgetFor('body'))
+          );
+        }
+      });
+
+      CMS.registerPreviewTemplate('site_pages', PagePreview);
+      CMS.registerPreviewTemplate('pages', PagePreview);
+      CMS.registerPreviewTemplate('hosts', PagePreview);
+    </script>
+  </body>
+</html>
