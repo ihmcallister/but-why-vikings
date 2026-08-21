@@ -228,40 +228,40 @@ func writeEpisodes(showName string, episodes []episodeContent) error {
 
 func renderEpisodeMarkdown(showName string, episode episodeContent) string {
 	var buf bytes.Buffer
-	buf.WriteString("+++\n")
-	buf.WriteString("title = ")
+	buf.WriteString("---\n")
+	buf.WriteString("title: ")
 	buf.WriteString(strconv.Quote(episode.Title))
 	buf.WriteString("\n")
-	buf.WriteString("date = ")
+	buf.WriteString("date: ")
 	buf.WriteString(episode.Published.UTC().Format(time.RFC3339))
 	buf.WriteString("\n")
-	buf.WriteString("draft = false\n")
-	buf.WriteString("source = \"rss\"\n")
-	buf.WriteString("sync_id = ")
+	buf.WriteString("draft: false\n")
+	buf.WriteString("source: \"rss\"\n")
+	buf.WriteString("sync_id: ")
 	buf.WriteString(strconv.Quote(episode.ID))
 	buf.WriteString("\n")
-	buf.WriteString("show = ")
+	buf.WriteString("show: ")
 	buf.WriteString(strconv.Quote(showName))
 	buf.WriteString("\n")
 	if episode.Duration != "" {
-		buf.WriteString("duration = ")
+		buf.WriteString("duration: ")
 		buf.WriteString(strconv.Quote(episode.Duration))
 		buf.WriteString("\n")
 	}
 	if episode.EpisodeNo != "" {
-		buf.WriteString("episode_number = ")
+		buf.WriteString("episode_number: ")
 		buf.WriteString(strconv.Quote(episode.EpisodeNo))
 		buf.WriteString("\n")
 	}
 	if episode.EpisodeType != "" {
-		buf.WriteString("episode_type = ")
+		buf.WriteString("episode_type: ")
 		buf.WriteString(strconv.Quote(episode.EpisodeType))
 		buf.WriteString("\n")
 	}
-	buf.WriteString("explicit = ")
+	buf.WriteString("explicit: ")
 	buf.WriteString(strconv.FormatBool(episode.Explicit))
 	buf.WriteString("\n")
-	buf.WriteString("+++\n\n")
+	buf.WriteString("---\n\n")
 	buf.WriteString(episode.Description)
 
 	sections := make([]string, 0, 2)
