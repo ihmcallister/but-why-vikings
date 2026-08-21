@@ -1,6 +1,6 @@
-+++
-title = "Episodes"
-+++
+---
+title: "Episodes"
+---
 
 A running list of episodes from But, Why Vikings?.
 
