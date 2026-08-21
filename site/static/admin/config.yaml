@@ -4,15 +4,15 @@ backend:
   name: github
   repo: ihmcallister/but-why-vikings
   branch: main
-  site_domain: butwhyvikings.giantbrain.co.uk
+  site_domain: butwhyvikings.netlify.app
   squash_merges: true
 publish_mode: editorial_workflow
-site_url: https://butwhyvikings.giantbrain.co.uk/
+site_url: https://butwhyvikings.netlify.app/
 media_folder: site/static/img
 
 collections:
-  - name: site_pages
-    label: Pages
+  - name: core_content
+    label: Core content
     files:
       - name: homepage
         label: Homepage
@@ -29,49 +29,30 @@ collections:
             widget: object
             required: false
             fields:
-              - label: Page settings
+              - label: Display settings
                 name: pages
                 widget: object
                 required: false
                 fields:
-                  - label: Disable title
-                    name: disable_title
-                    widget: boolean
-                    required: false
-                  - label: Disable sections
-                    name: disable_sections
-                    widget: boolean
-                    required: false
-      - name: hosts-index
-        label: Hosts page
-        file: site/content/hosts/_index.md
-        fields:
-          - label: Title
-            name: title
-            widget: string
-          - label: Body
-            name: body
-            widget: markdown
-      - name: episodes-index
-        label: Episodes page
-        file: site/content/episodes/_index.md
-        fields:
-          - label: Title
-            name: title
-            widget: string
-          - label: Body
-            name: body
-            widget: markdown
+                  - name: disable_collections
+                    widget: hidden
+                    default: true
+                  - name: disable_pages
+                    widget: hidden
+                    default: true
+                  - name: disable_sections
+                    widget: hidden
+                    default: true
+                  - name: disable_title
+                    widget: hidden
+                    default: true
   - name: pages
-    label: Page
+    label: Pages
     folder: site/content
-    filter:
-      field: type
-      value: page
     create: true
     extension: md
     format: frontmatter
-    slug: "{{slug}}"
+    path: "{{slug}}/_index"
     fields:
       - label: Title
         name: title
