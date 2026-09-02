@@ -1,6 +1,5 @@
 ---
 title: "Ava Foxfort"
-draft: false
 weight: 2
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: "Tim Clare"
-draft: false
 weight: 1
 ---
 

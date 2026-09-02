@@ -57,10 +57,6 @@ collections:
       - label: Title
         name: title
         widget: string
-      - label: Draft
-        name: draft
-        widget: boolean
-        default: false
       - name: type
         widget: hidden
         default: page
@@ -78,10 +74,6 @@ collections:
       - label: Title
         name: title
         widget: string
-      - label: Draft
-        name: draft
-        widget: boolean
-        default: false
       - label: Weight
         name: weight
         widget: number
