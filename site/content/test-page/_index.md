@@ -1,6 +1,6 @@
 ---
 title: Test page
-draft: true
+draft: false
 type: page
 ---
 
