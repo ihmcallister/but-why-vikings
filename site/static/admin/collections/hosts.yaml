@@ -1,0 +1,22 @@
+collections:
+  - name: hosts
+    label: Hosts
+    folder: site/content/hosts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Weight
+        name: weight
+        widget: number
+        default: 1
+      - name: type
+        widget: hidden
+        default: host
+      - label: Body
+        name: body
+        widget: markdown

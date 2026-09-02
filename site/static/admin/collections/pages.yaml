@@ -1,0 +1,18 @@
+collections:
+  - name: pages
+    label: Pages
+    folder: site/content
+    create: true
+    extension: md
+    format: frontmatter
+    path: "{{slug}}/_index"
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - name: type
+        widget: hidden
+        default: page
+      - label: Body
+        name: body
+        widget: markdown
