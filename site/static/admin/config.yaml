@@ -9,3 +9,10 @@ backend:
 publish_mode: editorial_workflow
 site_url: https://butwhyvikings.netlify.app/
 media_folder: site/static/img
+media_libraries:
+  all:
+    transformations:
+      raster_image:
+        format: webp
+        width: 800
+        height: 800
