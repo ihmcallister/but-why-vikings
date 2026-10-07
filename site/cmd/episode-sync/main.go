@@ -261,21 +261,18 @@ func renderEpisodeMarkdown(showName string, episode episodeContent) string {
 	buf.WriteString("explicit: ")
 	buf.WriteString(strconv.FormatBool(episode.Explicit))
 	buf.WriteString("\n")
-	buf.WriteString("---\n\n")
-	buf.WriteString(episode.Description)
-
-	sections := make([]string, 0, 2)
 	if episode.PageURL != "" {
-		sections = append(sections, "Episode page: ["+escapeMarkdownLabel(episode.Title)+"]("+episode.PageURL+")")
+		buf.WriteString("episode_url: ")
+		buf.WriteString(strconv.Quote(episode.PageURL))
+		buf.WriteString("\n")
 	}
 	if episode.AudioURL != "" {
-		sections = append(sections, "<audio controls preload=\"none\" src=\""+episode.AudioURL+"\">Your browser does not support the audio element.</audio>")
+		buf.WriteString("audio_url: ")
+		buf.WriteString(strconv.Quote(episode.AudioURL))
+		buf.WriteString("\n")
 	}
-	if len(sections) > 0 {
-		buf.WriteString("\n\n")
-		buf.WriteString(strings.Join(sections, "\n\n"))
-	}
-
+	buf.WriteString("---\n\n")
+	buf.WriteString(episode.Description)
 	buf.WriteString("\n")
 	return buf.String()
 }
@@ -288,10 +285,4 @@ func sanitizeSlug(input string) string {
 		return "episode"
 	}
 	return slug
-}
-
-func escapeMarkdownLabel(input string) string {
-	label := strings.ReplaceAll(input, "[", "\\[")
-	label = strings.ReplaceAll(label, "]", "\\]")
-	return label
 }

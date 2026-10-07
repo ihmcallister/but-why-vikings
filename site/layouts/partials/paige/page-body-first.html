@@ -1,0 +1,8 @@
+{{- if and .IsPage (eq .Section "episodes") -}}
+  {{- with .Params.episode_url }}
+<p><a href="{{ . }}" rel="noopener noreferrer" target="_blank">Episode page</a></p>
+  {{- end }}
+  {{- with .Params.audio_url }}
+<audio controls preload="none" src="{{ . }}">Your browser does not support the audio element.</audio>
+  {{- end }}
+{{- end -}}
