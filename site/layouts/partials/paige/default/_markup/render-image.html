@@ -1,27 +1,40 @@
-{{- $img := .Page.Resources.GetMatch .Destination -}}
+{{- $sub := .Destination -}}
+{{- $img := "" -}}
+
+{{/* 1. Locate the image asset */}}
+{{- if .Page.Resources.GetMatch $sub -}}
+  {{- $img = .Page.Resources.GetMatch $sub -}}
+{{- else if resources.Get $sub -}}
+  {{- $img = resources.Get $sub -}}
+{{- end -}}
 
 {{- if $img -}}
-  {{/* Define the image sizes you want to generate for mobile up to desktop */}}
-  {{- $sizes := slice 400 800 1200 -}}
+  {{/* 2. Define target widths for responsive scaling */}}
+  {{- $widths := slice 480 768 1200 -}}
+  {{- $srcset := slice -}}
 
-  <picture>
-    {{/* Generate WebP versions for each size breakpoint */}}
-    {{- range $sizes -}}
-      {{- if lt . $img.Width -}}
-        {{- $resized := $img.Resize (printf "%dx webp" .) -}}
-        <source media="(max-width: {{ . }}px)" srcset="{{ $resized.RelPermalink }}" type="image/webp">
-      {{- end -}}
+  {{/* 3. Generate the resized versions */}}
+  {{- range $widths -}}
+    {{- if lt . $img.Width -}}
+      {{- $resized := $img.Resize (printf "%dx webp" .) -}}
+      {{- $srcset = $srcset | append (printf "%s %dw" $resized.RelPermalink .) -}}
     {{- end -}}
+  {{- end -}}
 
-    {{/* Fallback to original layout width or an optimized JPEG/PNG default */}}
-    {{- $fallback := $img.Resize "1200x" -}}
-    <img src="{{ $fallback.RelPermalink }}"
-         alt="{{ .Text }}"
-         title="{{ .Title }}"
-         loading="lazy"
-         style="width: 100%; height: auto; max-width: 100%;">
-  </picture>
+  {{/* 4. Include the original size in the srcset as a fallback */}}
+  {{- $srcset = $srcset | append (printf "%s %dw" $img.RelPermalink $img.Width) -}}
+
+  {{/* 5. Output the optimized responsive HTML */}}
+  <img
+    src="{{ $img.RelPermalink }}"
+    srcset="{{ delimit $srcset ", " }}"
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 1200px"
+    width="{{ $img.Width }}"
+    height="{{ $img.Height }}"
+    alt="{{ .Text }}"
+    loading="lazy"
+    decoding="async">
 {{- else -}}
-  {{/* Fallback if image isn't processed via Page Bundles */}}
+  {{/* Fallback for external URLs or missing local images */}}
   <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}">
 {{- end -}}
