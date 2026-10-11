@@ -17,3 +17,19 @@ media_libraries:
         format: webp
         width: 800
         height: 800
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "content/posts"
+    extension: "md"
+    format: "yaml"
+    create: true
+    # Tells Sveltia to create a leaf bundle folder structure: /content/posts/my-post/index.md
+    path: "{{slug}}/index" 
+    # Saves uploaded images directly into the same sub-folder
+    media_folder: "" 
+    public_folder: "" 
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
