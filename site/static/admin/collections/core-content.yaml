@@ -1,4 +1,5 @@
 collections:
+
   - name: core_content
     label: Core content
     files:
