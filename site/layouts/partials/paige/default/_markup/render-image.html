@@ -1,0 +1,27 @@
+{{- $img := .Page.Resources.GetMatch .Destination -}}
+
+{{- if $img -}}
+  {{/* Define the image sizes you want to generate for mobile up to desktop */}}
+  {{- $sizes := slice 400 800 1200 -}}
+
+  <picture>
+    {{/* Generate WebP versions for each size breakpoint */}}
+    {{- range $sizes -}}
+      {{- if lt . $img.Width -}}
+        {{- $resized := $img.Resize (printf "%dx webp" .) -}}
+        <source media="(max-width: {{ . }}px)" srcset="{{ $resized.RelPermalink }}" type="image/webp">
+      {{- end -}}
+    {{- end -}}
+
+    {{/* Fallback to original layout width or an optimized JPEG/PNG default */}}
+    {{- $fallback := $img.Resize "1200x" -}}
+    <img src="{{ $fallback.RelPermalink }}"
+         alt="{{ .Text }}"
+         title="{{ .Title }}"
+         loading="lazy"
+         style="width: 100%; height: auto; max-width: 100%;">
+  </picture>
+{{- else -}}
+  {{/* Fallback if image isn't processed via Page Bundles */}}
+  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}">
+{{- end -}}
