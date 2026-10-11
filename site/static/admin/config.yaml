@@ -25,10 +25,10 @@ collections:
     format: "yaml"
     create: true
     # Tells Sveltia to create a leaf bundle folder structure: /content/posts/my-post/index.md
-    path: "site/static/img"
+    path: "site/static/img/"
     # Saves uploaded images directly into the same sub-folder
-    media_folder: ""
-    public_folder: ""
+    media_folder: "site/static/img"
+    public_folder: "site/static/img"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Featured Image", name: "image", widget: "image" }
